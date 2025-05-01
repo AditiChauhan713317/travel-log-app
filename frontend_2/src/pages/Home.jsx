@@ -1,5 +1,5 @@
 import Log from '../components/Log';
-import Create from '../components/create2';
+import Create from '../components/Create2';
 import { useLogsContext } from '../LogsContext';
 import { useCreateContext } from '../CreateContext';
 import About from '../components/About';

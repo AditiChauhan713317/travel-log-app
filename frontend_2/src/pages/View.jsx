@@ -3,7 +3,7 @@ import removeMarkdown from 'remove-markdown';
 import { useNavigate } from "react-router-dom";
 import config from '../config';
 import { useLogsContext } from '../LogsContext';
-import Create from '../components/create2';
+import Create from '../components/Create2';
 import { useCreateContext } from '../CreateContext';
 
 

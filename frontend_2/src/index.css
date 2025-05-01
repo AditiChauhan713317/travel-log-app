@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+#root{
+    font-family: "Source Code Pro", monospace;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+  }
+
+  body {
+    
+    background: repeating-linear-gradient(
+      0deg,
+      #dbdbdb, #dbdbdb 1px, /* Horizontal lines */
+      transparent 1px, transparent 100%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #dbdbdb, #dbdbdb 1px, /* Vertical lines */
+      transparent 1px, transparent 100%
+    );
+    background-size: 20px 20px; /* Adjust the size */
+    background-color: #e9e7e7;
+  }
+  
+  .custom-shadow {
+    box-shadow: -1px 2px 0px rgba(0, 0, 0);
+  }
+
+  .custom-shadow-2 {
+    box-shadow: 0px 1px 0px rgba(0, 0, 0);
+  }
+
+  input.custom-shadow-2:focus{
+    box-shadow: -1px 1px 0px rgba(0, 0, 0);
+  }
+
+  .custom-shadow-view-box {
+    box-shadow: -5px 7px 0px rgba(0, 0, 0);
+  }
+
+
+  .spinner-container {
+    display: flex;
+    justify-content: center;  /* Horizontally center */
+    align-items: center;      /* Vertically center */
+    height: 100vh;            /* Full viewport height */
+   
+  }
+
+  /* Add to your CSS file */
+/* Define the square */
+.spinner {
+  width: 300px;
+  height: 300px;
+  background-color: #c86ff1;  /* Color of the square */
+  border: 2px solid black;
+  border-radius: 100px;
+  animation: rotate 2s linear infinite;  /* Animation applied to the square */
+  
+}
+
+/* Keyframe animation for rotating the square */
+@keyframes rotate {
+  0% { transform: rotate(0deg); }  /* Start with no rotation */
+  100% { transform: rotate(360deg); }  /* Rotate 360 degrees */
+}
+
+
+
+.spinner-content {
+  animation: reverse-rotate 2s linear infinite;
+}
+
+
+/* Reverse rotation */
+@keyframes reverse-rotate {
+  0% { transform: rotate(-0deg); }
+  100% { transform: rotate(-360deg); }  /* Counterclockwise rotation */
+}
+
+/* custom media query for under 630px to show scroll bar */
+@media (max-width: 629px) {
+  .custom-scroll {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+}
+
+
+.poem {
+  
+}

@@ -122,9 +122,9 @@ function Create() {
     }
  
     return (
-        <div className=' fixed top-0 left-0 w-full h-full flex justify-center items-center z-50'>
+        <div className='fixed top-0 left-0 w-full h-full flex justify-center items-center z-50'>
             <form onSubmit={handleSubmit} className='bg-white w-2xl min-h-[100px] relative mx-auto flex flex-col gap-2 justify-center items-center border rounded-2xl p-4 custom-shadow-view-box '>
-                <i onClick={() => setShowCreate(false)} className="fa-solid fa-xmark text-black absolute top-2 right-2 rounded border px-2 py-1 custom-shadow bg-[#ff6a6a]"></i>
+                <i onClick={() => setShowCreate(false)} className="fa-solid fa-xmark text-black absolute top-2 right-2 rounded border px-2 py-1 custom-shadow bg-[#ff6a6a] cursor-pointer"></i>
                 <p>{questions[curr_idx]}</p>
                 <input type="text" value={input} onChange={(e) => setInput(e.target.value)} className='focus:outline-none  border custom-shadow-2  rounded-lg px-4 py-1 text-sm m-1'/>
                 <button type='submit' disabled={!input.trim()} className='custom-shadow border border-black outline-none  rounded-lg py-1 px-5 text-sm bg-[#1b85ff]  '>{curr_idx === questions.length-1 ? "Submit" : "Next"}</button>

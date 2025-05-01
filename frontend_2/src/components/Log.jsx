@@ -17,8 +17,8 @@ function Log({log, setLogs}) {
 
     return (
         
-        <div onClick={handleClick} className="flex flex-col gap-3 min-h-32 h-auto max-w-[50rem] m-5 items-center  p-4  bg-[hsl(0,0%,99%)] border rounded-2xl custom-shadow cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-1">
-            <h1 className="border p-2 rounded-2xl w-[100%] text-center font-extrabold bg-yellow-300">{cleaner_title}</h1>
+        <div onClick={handleClick} className="flex flex-col gap-3 min-h-32 h-auto max-w-[50rem] m-3 items-center  p-3  bg-[hsl(0,0%,99%)] border rounded-2xl custom-shadow cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-1">
+            <h1 className="border p-1 rounded-2xl w-[100%] text-center font-extrabold bg-yellow-300">{cleaner_title}</h1>
             <p className="text-justify line-clamp-5 w-full h-full overflow-ellipsis">{clean_text}</p>
         </div>
     )

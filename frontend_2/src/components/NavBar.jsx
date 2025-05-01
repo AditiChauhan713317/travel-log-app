@@ -15,7 +15,7 @@ function NavBar() {
 
     
     return (
-        <div className="nav custom-shadow flex justify-start gap-4 p-4 mx-5 mt-1 border rounded-xl bg-[#e5a5a1]  text-lg mb-4 ">
+        <div className="nav custom-shadow flex justify-start gap-3 p-2 mx-5 mt-1 border rounded-xl bg-[#e5a5a1]  text-lg mb-4 ">
             <Link to='/about' className="hover:bg-[#2e8fff81] p-1 rounded-xl">About</Link>
             <Link to='/' className="hover:bg-[#2e8fff81] p-1 rounded-xl" >My Logs</Link>
             <button className="hover:bg-[#2e8fff81] p-1 rounded-xl" onClick={handleClick}>Create</button>

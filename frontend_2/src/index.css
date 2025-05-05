@@ -181,14 +181,18 @@
 }
 
 @media (max-width: 480px) {
+
+  .nav {
+    display: none;
+  }
+
   .container {
     width: 100%;
-    height: 100vh; /* Use 100vh to take the full viewport height */
-    position: fixed; /* Use fixed to keep the container on screen */
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
+    height: 100vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    /* overflow: hidden; */
+
   }
 
   .title-container {

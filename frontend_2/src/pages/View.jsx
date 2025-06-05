@@ -63,7 +63,7 @@ function View() {
 
     return (
         
-        <div className='p-3'>    
+        <div className='p-7'>    
         <div className="container border rounded-xl custom-shadow-view-box mx-auto overflow-hidden shadow-lg flex flex-col w-4/5 sm:w-3/5 md:w-2/5 my-8 min-h-[450px] sm:min-h-[400px] max-h-[90vh] relative">
         {/* container border rounded-xl custom-shadow-view-box mx-auto overflow-hidden shadow-lg flex flex-col w-4/5 sm:w-3/5 md:w-2/5 min-h-[350px] sm:min-h-[200px] max-h-[90vh] my-8 relative */}
     {/*    */}
@@ -77,10 +77,11 @@ function View() {
         </div>
         {/* absolute top-2 right-2  */}
         {/* Main Content */}
-        <div className="flex-[10] content-container p-4 text-justify bg-white relative overflow-hidden">
+        <div className="flex-[10] content-container text-justify bg-white relative overflow-hidden">
             <p className="content-text text-lg sm:text-md md:text-lg custom-scroll overflow-y-auto">{clean_text}</p>
-            <span className="content-date absolute right-3 bottom-2 text-sm text-gray-600">{`[${date}]`}</span>
+            <p className="content-date  text-sm text-gray-600">{`[${date}]`}</p>
         </div>
+        {/* absolute right-3 bottom-2 */}
     
         {/* Footer Section */}
         <div className="flex-[1] footer-container border-t rounded-b-xl flex justify-between sm:justify-center items-center bg-[#DE92D0] p-2">

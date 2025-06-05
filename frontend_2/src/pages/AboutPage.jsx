@@ -8,17 +8,18 @@ function AboutPage() {
 
     return (
      
-        <>
-        <About />
-        <div className="flex justify-center items-center m-10">
-            <p className="p-5 text-xl italic">
-            We run. We trip.<br></br>
-            We map the mess.<br></br>
-
-            Half the roads we take don’t exist.<br></br>
-            Half the stories we tell didn’t happen — but who’s checking?<br></br>
-
-            Write it down. Call it a journey.</p>
+        <> 
+        <div className="flex flex-col justify-center items-center m-10 ">
+           <span className="text-lg">
+            Turn your adventures into stories in 3 easy steps- ✨<br/>
+            <br />
+            🗺️ Answer a Few Questions – Tell us about your real or imaginary trip.<br/>
+            <br />
+            🤖 Let the AI Work Its Magic – Watch your answers become a unique travel log.<br/>
+            <br />
+            💾 Save & Revisit – Keep your logs, edit them, and relive the journey anytime.
+           </span>
+            <About />
         </div>
         </>
        

@@ -63,7 +63,7 @@ function View() {
 
     return (
         
-        <div className='p-7'>    
+        <div className='p-5'>    
         <div className="container border rounded-xl custom-shadow-view-box mx-auto overflow-hidden shadow-lg flex flex-col w-4/5 sm:w-3/5 md:w-2/5 my-8 min-h-[450px] sm:min-h-[400px] max-h-[90vh] relative">
         {/* container border rounded-xl custom-shadow-view-box mx-auto overflow-hidden shadow-lg flex flex-col w-4/5 sm:w-3/5 md:w-2/5 min-h-[350px] sm:min-h-[200px] max-h-[90vh] my-8 relative */}
     {/*    */}

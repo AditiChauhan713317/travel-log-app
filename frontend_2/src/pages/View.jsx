@@ -68,7 +68,7 @@ function View() {
         
     {/*    */}
         {/* Title */}
-        <div className="title-container border-b rounded-t-xl text-center font-extrabold text-2xl sm:text-xl bg-[#DE92D0]  relative flex justify-between items-center gap-10">
+        <div className="flex-[1] title-container border-b rounded-t-xl text-center font-extrabold text-2xl sm:text-xl bg-[#DE92D0]  relative flex justify-between items-center gap-10">
           {/* Left spacer to help center the title */}
             <div className="w-8 sm:w-10"></div>
              <span className='p-1'>{cleaner_title}</span>
@@ -77,7 +77,7 @@ function View() {
         </div>
         {/* absolute top-2 right-2  */}
         {/* Main Content */}
-        <div className="content-container p-4 text-justify bg-white relative overflow-hidden">
+        <div className="flex-[1] content-container p-4 text-justify bg-white relative overflow-hidden">
             <p className="content-text text-lg sm:text-md md:text-lg custom-scroll overflow-y-auto">{clean_text}</p>
             <span className="content-date absolute right-3 bottom-2 text-sm text-gray-600">{`[${date}]`}</span>
         </div>

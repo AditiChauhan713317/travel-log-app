@@ -23,83 +23,69 @@ app.use(express.json())
 
 
 // generate text request
-app.post('/generate-travel-log', async(req, res) => {
-    
-    try {
-        
-        const {location, food, vibes, activities} = req.body;
+app.post('/generate-travel-log', async (req, res) => {
+  try {
+    const { location, food, vibes, activities } = req.body;
 
-    
-        const prompt = `
-Create a fictional travel log in no more than 150 words for a person who visited ${location}, ate ${food}, and did ${activities}.
-The overall vibe of the trip was ${vibes}.
+    const prompt = `
+Create a fictional travel log and a short title in the following JSON format:
+{
+  "travelLog": "...",
+  "title": "..."
+}
 
-Important:
-- Some inputs may be realistic, some may be absurd or fictional.
-- Treat all inputs seriously without correcting or denying them.
-- Blend everything naturally into the story, embracing both the realistic and the absurd as real events.
+Details:
+- The person visited ${location}, ate ${food}, and did ${activities}.
+- The overall vibe of the trip was ${vibes}.
+- The travel log should be creative, no more than 150 words.
+- The title should be a SINGLE short creative title (max 8 words) for the log.
+- Some inputs may be realistic, others may be absurd or fictional — treat all seriously.
+- Do NOT include anything outside the JSON.
 `;
-        // fetching log
-        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-            method: "POST",
-            headers: {
-              "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              model: "mistralai/mistral-small-3.1-24b-instruct:free",
-              messages: [{ role: "user", content: prompt }]
-            })
-    })
+
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        model: "mistralai/mistral-small-3.1-24b-instruct:free",
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
 
     const data = await response.json();
 
-    // log the entire AI response'
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-    console.log("AI Response:", JSON.stringify(data, null, 2));
+    console.log("LLM Raw Response:", JSON.stringify(data, null, 2));
 
-    
+    const rawContent = data.choices?.[0]?.message?.content;
 
-    const travelLog = data.choices?.[0]?.message?.content;
-
-    // console.log(travelLog.type);
-
-    if(!travelLog) {
-        console.log("NO travel log generated");
-        return res.status(500).json({ error: 'AI failed to generate travel log' });
+    if (!rawContent) {
+      return res.status(500).json({ error: 'No response from LLM' });
     }
 
-    // fetching title
-    const titlePrompt = `Give a SINGLE short creative title (max 8 words) for a travel log based on this:\n"${travelLog}"`;
-
-    const response_title = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "mistralai/mistral-small-3.1-24b-instruct:free",
-          messages: [{ role: "user", content: titlePrompt }]
-        })
-})
-
-    const title_data = await response_title.json();
-
-    console.log("TITLEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-    console.log(title_data);
-    const title = title_data.choices?.[0]?.message?.content?.trim() || "Untitled";
-
-    // sending back the travel log
-    res.json({travelLog, title});
-
-    } catch (error) {
-        console.log("Failed to generate travel log ERROR::", error);
-        res.status(500).json({error: 'Failed to generate travel-log'});
+    let parsed;
+    try {
+      parsed = JSON.parse(rawContent);
+    } catch (err) {
+      console.error("Failed to parse JSON from LLM:", err);
+      return res.status(500).json({ error: 'Invalid JSON format from LLM' });
     }
-    
 
-})
+    const { travelLog, title } = parsed;
+
+    if (!travelLog || !title) {
+      return res.status(500).json({ error: 'Missing travelLog or title in LLM response' });
+    }
+
+    res.json({ travelLog, title });
+
+  } catch (error) {
+    console.error("Failed to generate travel log:", error);
+    res.status(500).json({ error: 'Failed to generate travel log' });
+  }
+});
 
 
 // save 
